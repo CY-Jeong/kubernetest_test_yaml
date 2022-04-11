@@ -1,0 +1,14 @@
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-container
+    ...
+    resources:
+      requests: # 요청
+        cpu: 200m
+        memory: 250Mi
+      limits: # 제한, limits만 있으면 동일한 requests 값이 저장됨.
+        cpu: 1
+        memory: 500Mi

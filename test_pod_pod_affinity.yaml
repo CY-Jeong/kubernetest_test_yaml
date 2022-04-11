@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  replicas: 5
+  ...
+  affinity:
+    podAffinity: #podAntiAffinity를 쓰면 label이 app: backend가 아닌 pod가 있는 node에서 실행
+      requiredDuringSchedulingIgnoredDuringExecution: # preferred를 쓰면 weight 쓸 수 있다.
+      - labelSelector:
+          matchLabels:
+            app: backend
+        topologyKey: kubernetes.io/hostname
